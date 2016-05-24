@@ -48,7 +48,21 @@
         "description": "OS to use. Centos or Redhat Enterprise Linux"
       }
     }
-
+    "rhn_user": {
+      "name": "rhn_user",
+      "type": "string",
+      "defaultValue": "changeme"
+    },
+    "rhn_pass": {
+      "name": "rhn_pass",
+      "type": "string",
+      "defaultValue": "changeme"
+    },
+    "rhn_pool": {
+      "name": "rhn_pool",
+      "type": "int",
+      "defaultValue": "8a85f9843e3d687a013e3ddd46dd02f2"
+    }
 
   },
   "variables": {

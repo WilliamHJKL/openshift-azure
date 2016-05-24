@@ -8,13 +8,6 @@
     "adminPassword": {
       "value": "redhat123"
     },
-
-    "rhn_user": {
-    "value": "rhn-gls-hoffmann"
-    },
-    "rhn_pass": {
-    "value": ""
-    },
     "rhn_pool": {
     "value": "8a85f9843e3d687a013e3ddd46dd07f1"
     },
