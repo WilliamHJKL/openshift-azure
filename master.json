@@ -32,6 +32,24 @@
     "numberOfNodes": {
       "type": "int"
     },
+    "rhn_user": {
+      "type": "string",
+      "metadata": {
+        "description": "RHN User ID"
+      }
+      },
+     "rhn_pass": {
+      "type": "securestring",
+      "metadata": {
+        "description": "RHN Password"
+      }
+      },
+    "rhn_pool": {
+      "type": "string",
+      "metadata": {
+        "description": "RHN pool ID"
+      }
+      },
     "baseTemplateUrl": {
       "type": "string"
     },
