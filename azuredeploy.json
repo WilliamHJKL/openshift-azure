@@ -50,9 +50,9 @@
     },
     "rhn_user": {
       "type": "string",
-      }
       "metadata": {
         "description": "RHN User ID"
+      }
       },
      "rhn_pass": {
       "type": "string",
@@ -66,7 +66,7 @@
         "description": "RHN pool ID"
       }
       },
-  },
+
   "variables": {
   "baseTemplateUrl": "https://raw.githubusercontent.com/WilliamRedHat/openshift-azure/rhel/",
     "baseVMachineTemplateUriInfranode": "[concat(variables('baseTemplateUrl'), 'infranode.json')]",
