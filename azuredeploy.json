@@ -48,6 +48,23 @@
         "description": "OS to use. Centos or Redhat Enterprise Linux"
       }
     }
+    "rhn_user": {
+      "type": "string",
+      "metadata": {
+        "description": "RHN User ID"
+      }
+     "rhn_pass": {
+      "type": "string",
+      "metadata": {
+        "description": "RHN Password"
+      }
+      }
+    "rhn_pool": {
+      "type": "string",
+      "metadata": {
+        "description": "RHN pool ID"
+      }
+      }
   },
   "variables": {
   "baseTemplateUrl": "https://raw.githubusercontent.com/WilliamRedHat/openshift-azure/rhel/",
