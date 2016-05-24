@@ -50,6 +50,7 @@
     }
     "rhn_user": {
       "type": "string",
+      }
       "metadata": {
         "description": "RHN User ID"
       }
