@@ -1,48 +1,28 @@
-# RedHat Openshift Origin cluster on Azure
+# RedHat Openshift 3.2 cluster on Azure
 
-When creating the RedHat Openshift Origin cluster on Azure, you will need a SSH RSA key for access. 
-
-## SSH Key Generation
-
-1. Windows - https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-putty-to-connect-to-a-vps
-2. Linux - https://help.ubuntu.com/community/SSH/OpenSSH/Keys#Generating_RSA_Keys
-3. Mac - https://help.github.com/articles/generating-ssh-keys/#platform-mac
+When creating the RedHat Openshift 3.2 cluster on Azure, you will need a SSH RSA key for access. 
 
 ## Create the cluster
 ### Create the cluster on the Azure Portal
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fderdanu%2Fazure-openshift%2Frhel%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FWilliamRedHat%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fderdanu%2Fazure-openshift%2Frhel%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FWilliamRedHat%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
 ### Create the cluster with powershell
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <RessourceGroupName> -TemplateUri https://raw.githubusercontent.com/derdanu/azure-openshift/master/azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <RessourceGroupName> -TemplateUri https://raw.githubusercontent.com/WilliamRedHat/openshift-azure/rhel/azuredeploy.json
 ```
 
-## Install Openshift Origin with Ansible
+## Install Openshift with Ansible
 
-You must use SSH Agentforwarding. The Installation is based on [Openshift Ansible](https://github.com/openshift/openshift-ansible). The lastest repository has been checked out on the master into the directory */opt/openshift-ansible/* and a minimal configuration file was created at */etc/ansible/hosts* for [Openshift Origin](https://github.com/openshift/origin).
+You must use SSH Agentforwarding. 
+You must register your systems into RHN and to add the proper channels.
 
-
-### Bash or Cygwin Terminal
-
-```bash
-user@localmachine:~$ eval `ssh-agent`
-user@localmachine:~$ ssh-add
-user@localmachine:~$ ssh -A <MasterIP>
-[adminUsername@master ~]$ ./openshift-install.sh
-```
-
-### Putty on Windows
-
-To login on the Master please refer to the [Agent forwarding HowTo](https://github.com/Azure/azure-quickstart-templates/blob/master/101-acs-mesos/docs/SSHKeyManagement.md#key-management-and-agent-forwarding-with-windows-pageant) for Putty using Pageant.
-
-```bash  
 [adminUsername@master ~]$ ./openshift-install.sh
 ```
 
@@ -70,4 +50,5 @@ To login on the Master please refer to the [Agent forwarding HowTo](https://gith
 
 ------
 
-This template deploys a RedHat Openshift Origin cluster on Azure.
+This template deploys a RedHat Openshift 3.2  cluster on Azure.
+This work is based on https://github.com/derdanu
