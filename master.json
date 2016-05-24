@@ -161,7 +161,7 @@
         "typeHandlerVersion": "1.3",
         "settings": {
           "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'master.sh')]" ],
-          "commandToExecute": "[ concat('sh master.sh ', parameters('adminUsername'), ' ', parameters('adminPassword'), ' ', reference(concat(parameters('vmName'), 'pip')).dnsSettings.fqdn, ' ', padLeft(parameters('numberOfNodes'), 2, '0'), ' ', parameters('routerExtIP') ) ]"
+          "commandToExecute": "[ concat('sh master.sh ', parameters('adminUsername'), ' ', parameters('adminPassword'), ' ', reference(concat(parameters('vmName'), 'pip')).dnsSettings.fqdn, ' ', padLeft(parameters('numberOfNodes'), 2, '0'), ' ', parameters('routerExtIP'), ' ', parameters('rhn_user'), ' ', parameters('rhn_pass'), ' ', parameters('rhn_pool')  ) ]"
         }
       }
     },
