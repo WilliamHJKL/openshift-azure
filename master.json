@@ -38,7 +38,7 @@
         "description": "RHN User ID"
       }
       },
-     "rhPpass": {
+     "rhnPass": {
       "type": "securestring",
       "metadata": {
         "description": "RHN Password"
