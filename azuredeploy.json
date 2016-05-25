@@ -219,6 +219,15 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
+          rhn_user: {
+            value: [parameters('rhn_user')]
+          },
+          rhn_pass: {
+            value: [parameters('rhn_pass')]
+          },
+          rhn_pool: {
+            value: [parameters('rhn_pool')]
+          },
           "imageReference": {
             "value": "[variables(parameters('image'))]"
           }
@@ -271,6 +280,15 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
+          rhn_user: {
+            value: [parameters('rhn_user')]
+          },
+          rhn_pass: {
+            value: [parameters('rhn_pass')]
+          },
+          rhn_pool: {
+            value: [parameters('rhn_pool')]
+          },
           "routerExtIP": {
             "value": "[reference('infranode').outputs.pip.value]"
           },
@@ -315,6 +333,15 @@
           },
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
+          },
+          rhn_user: {
+            value: [parameters('rhn_user')]
+          },
+          rhn_pass: {
+            value: [parameters('rhn_pass')]
+          },
+          rhn_pool: {
+            value: [parameters('rhn_pool')]
           },
           "imageReference": {
             "value": "[variables(parameters('image'))]"
