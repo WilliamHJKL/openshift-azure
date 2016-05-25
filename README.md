@@ -40,9 +40,9 @@ You must register your systems into RHN and to add the proper channels.
 | masterDnsName | String        | DNS Prefix for the Openshift Master / Webconsole |   |
 | numberOfNodes | Integer       | Number of Openshift Nodes to create              |   |
 | image         | String        | Operating System to use. RHEL or CentOs          |   |
-| rhn_user      | String        | Red Hat Network user id                          |   |
-| rhn_pass      | SecureString  | Red Hat Network password                         |   |
-| rhn_pool      | String        | Red Hat Network pool id                          |   |
+| rhnUser      | String        | Red Hat Network user id                          |   |
+| rhnPass      | SecureString  | Red Hat Network password                         |   |
+| rhnPool      | String        | Red Hat Network pool id                          |   |
 
 ### Output Parameters
 

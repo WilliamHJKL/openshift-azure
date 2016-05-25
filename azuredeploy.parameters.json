@@ -20,13 +20,13 @@
     "image": {
       "value": "rhel"
     },
-    "rhn_user": {
+    "rhnUser": {
       "value": "rhn-gls-hoffmann"
     },
-    "rhn_pass": {
+    "rhnPass": {
       "value": ""
     },
-    "rhn_pool": {
+    "rhnPool": {
       "value": ""
     }
   }
