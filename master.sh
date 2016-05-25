@@ -16,18 +16,11 @@ subscription-manager attach --pool=${rhn_pool}
 subscription-manager repos --disable='*'
 subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.2-rpms"
 
-yum install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
-yum install atomic-openshift-utils
+yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
+yum -y install atomic-openshift-utils
 
-##yum -y update
-### yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion httpd-tools
-### yum -y install https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-6.noarch.rpm
-### sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo
-### yum -y --enablerepo=epel install ansible1.9 pyOpenSSL
-### git clone https://github.com/openshift/openshift-ansible /opt/openshift-ansible
-### yum -y install docker
-#sed -i -e "s#^OPTIONS='--selinux-enabled'#OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'#" /etc/sysconfig/docker
-#
+sed -i -e "s#^OPTIONS='--selinux-enabled'#OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'#" /etc/sysconfig/docker
+
 cat <<EOF > /etc/sysconfig/docker-storage-setup
 DEVS=/dev/sdc
 VG=docker-vg
