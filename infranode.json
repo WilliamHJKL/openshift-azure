@@ -26,6 +26,15 @@
     "baseTemplateUrl": {
       "type": "string"
     },
+    "rhnUser": {
+      "value": "[parameters('rhnUser')]"
+          },
+    "rhnPass": {
+      "value": "[parameters('rhnPass')]"
+          },
+    "rhnPool": {
+      "value": "[parameters('rhnPool')]"
+          },
     "imageReference": {
       "type": "object",
       "metadata": {

@@ -26,6 +26,24 @@
     "baseTemplateUrl": {
       "type": "string"
     },
+    "rhnUser": {
+      "type": "string",
+      "metadata": {
+        "description": "RHN User ID"
+      }
+      },
+     "rhnPass": {
+      "type": "securestring",
+      "metadata": {
+        "description": "RHN Password"
+      }
+      },
+    "rhnPool": {
+      "type": "string",
+      "metadata": {
+        "description": "RHN pool ID"
+      }
+      },
     "imageReference": {
       "type": "object",
       "metadata": {
