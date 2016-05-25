@@ -65,7 +65,7 @@
       "metadata": {
         "description": "RHN pool ID"
       }
-      },
+      }
   },
   "variables": {
   "baseTemplateUrl": "https://raw.githubusercontent.com/WilliamRedHat/openshift-azure/rhel/",
