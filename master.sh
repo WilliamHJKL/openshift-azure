@@ -12,13 +12,13 @@ rhn_pool=$8
 touch /root/mylogs
 echo $date >> /root/mylogs
 
-subscription-manager register --username="$rhn_username" --password="$rhn_password" --pool="$rhn_pool"
+subscription-manager register --username="$rhn_username" --password="$rhn_password" --pool="$rhn_pool" --force
 echo $? >> /root/mylogs
 subscription-manager repos --disable="*"
 subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.2-rpms"
 
-yum install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
-yum install atomic-openshift-utils
+#yum install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
+# yum install atomic-openshift-utils
 
 ##yum -y update
 ### yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion httpd-tools
