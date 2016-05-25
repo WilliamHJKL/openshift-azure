@@ -1,3 +1,4 @@
+This is a work in progress....
 # RedHat Openshift 3.2 cluster on Azure
 
 When creating the RedHat Openshift 3.2 cluster on Azure, you will need a SSH RSA key for access. 
@@ -31,14 +32,17 @@ You must register your systems into RHN and to add the proper channels.
 ## Parameters
 ### Input Parameters
 
-| Name| Type           | Description |
-| ------------- | ------------- | ------------- |
-| adminUsername  | String       | Username for SSH Login and Openshift Webconsole |
-|  adminPassword | SecureString | Password for the Openshift Webconsole |
-| sshKeyData     | String       | Public SSH Key for the Virtual Machines |
-| masterDnsName  | String       | DNS Prefix for the Openshift Master / Webconsole | 
-| numberOfNodes  | Integer      | Number of Openshift Nodes to create |
-| image | String | Operating System to use. RHEL or CentOs |
+| Name          | Type          | Description                                      |   |
+| ------------- | ------------- | -------------                                    |   |
+| adminUsername | String        | Username for SSH Login and Openshift Webconsole  |   |
+| adminPassword | SecureString  | Password for the Openshift Webconsole            |   |
+| sshKeyData    | String        | Public SSH Key for the Virtual Machines          |   |
+| masterDnsName | String        | DNS Prefix for the Openshift Master / Webconsole |   |
+| numberOfNodes | Integer       | Number of Openshift Nodes to create              |   |
+| image         | String        | Operating System to use. RHEL or CentOs          |   |
+| rhn_user      | String        | Red Hat Network user id                          |   |
+| rhn_pass      | SecureString  | Red Hat Network password                         |   |
+| rhn_pool      | String        | Red Hat Network pool id                          |   |
 
 ### Output Parameters
 
