@@ -27,14 +27,23 @@
       "type": "string"
     },
     "rhnUser": {
-      "value": "[parameters('rhnUser')]"
-          },
-    "rhnPass": {
-      "value": "[parameters('rhnPass')]"
-          },
+      "type": "string",
+      "metadata": {
+        "description": "RHN User ID"
+      }
+      },
+     "rhnPass": {
+      "type": "securestring",
+      "metadata": {
+        "description": "RHN Password"
+      }
+      },
     "rhnPool": {
-      "value": "[parameters('rhnPool')]"
-          },
+      "type": "string",
+      "metadata": {
+        "description": "RHN pool ID"
+      }
+      },
     "imageReference": {
       "type": "object",
       "metadata": {
