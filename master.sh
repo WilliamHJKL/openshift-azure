@@ -10,7 +10,7 @@ rhn_pass=$7
 rhn_pool=$8
 
 
-subscription-manager register --username=${rhn_username} --password=${rhn_password} --force
+subscription-manager register --username=${rhn_username} --password=${rhn_pass} --force
 subscription-manager attach --pool=${rhn_pool}
 
 subscription-manager repos --disable='*'
