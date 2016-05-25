@@ -12,7 +12,8 @@ rhn_pool=$8
 touch /root/mylogs
 echo $date >> /root/mylogs
 
-subscription-manager register --username="$rhn_username" --password="$rhn_password" --pool="$rhn_pool" --force
+subscription-manager register --username="$rhn_username" --password="$rhn_password" --force
+subscription-manager attach --pool="$rhn_pool"
 echo $? >> /root/mylogs
 subscription-manager repos --disable="*"
 subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.2-rpms"
