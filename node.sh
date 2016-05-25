@@ -5,7 +5,9 @@ rhn_pass=$2
 rhn_pool=$3
 
 
-subscription-manager register --username="$rhn_username" --password="$rhn_pass" --pool="$rhn_pool"
+subscription-manager register --username=${rhn_username} --password=${rhn_pass} --force
+subscription-manager attach --pool=${rhn_pool}
+
 subscription-manager repos --disable="*"
 subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.2-rpms"
 
