@@ -48,19 +48,19 @@
         "description": "OS to use. Centos or Redhat Enterprise Linux"
       }
     },
-    "rhn_user": {
+    "rhnUser": {
       "type": "string",
       "metadata": {
         "description": "RHN User ID"
       }
       },
-     "rhn_pass": {
+     "rhnPass": {
       "type": "securestring",
       "metadata": {
         "description": "RHN Password"
       }
       },
-    "rhn_pool": {
+    "rhnPool": {
       "type": "string",
       "metadata": {
         "description": "RHN pool ID"
@@ -104,7 +104,7 @@
       "offer": "RHEL",
       "sku": "7.2",
       "version": "latest"
-    }  
+    }
   },
   "resources": [
     {
@@ -219,14 +219,14 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
-          rhn_user: {
-            value: [parameters('rhn_user')]
+          "rhnUser": {
+            "value": "[parameters('rhnUser')]"
           },
-          rhn_pass: {
-            value: [parameters('rhn_pass')]
+          "rhnPass": {
+            "value": "[parameters('rhnPass')]"
           },
-          rhn_pool: {
-            value: [parameters('rhn_pool')]
+          "rhnPool": {
+            "value": "[parameters('rhnPool')]"
           },
           "imageReference": {
             "value": "[variables(parameters('image'))]"
@@ -280,14 +280,14 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
-          rhn_user: {
-            value: [parameters('rhn_user')]
+          "rhnUser": {
+            "value": "[parameters('rhnUser')]"
           },
-          rhn_pass: {
-            value: [parameters('rhn_pass')]
+          "rhnPass": {
+            "value": "[parameters('rhnPass')]"
           },
-          rhn_pool: {
-            value: [parameters('rhn_pool')]
+          "rhnPool": {
+            "value": "[parameters('rhnPool')]"
           },
           "routerExtIP": {
             "value": "[reference('infranode').outputs.pip.value]"
@@ -334,14 +334,14 @@
           "baseTemplateUrl": {
             "value": "[variables('baseTemplateUrl')]"
           },
-          rhn_user: {
-            value: [parameters('rhn_user')]
+          "rhnUser": {
+            "value": "[parameters('rhnUser')]"
           },
-          rhn_pass: {
-            value: [parameters('rhn_pass')]
+          "rhnPass": {
+            "value": "[parameters('rhnPass')]"
           },
-          rhn_pool: {
-            value: [parameters('rhn_pool')]
+          "rhnPool": {
+            "value": "[parameters('rhnPool')]"
           },
           "imageReference": {
             "value": "[variables(parameters('image'))]"
