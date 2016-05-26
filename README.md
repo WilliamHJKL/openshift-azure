@@ -32,21 +32,26 @@ New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <Re
 Use the knowledge base article : https://access.redhat.com/articles/1994463
 
 #### Use the Azure CLI
+```
 
 [hoffmann@william ~]$ git clone https://github.com/WilliamRedHat/openshift-azure.git
 [hoffmann@william ~]$ cd ~/openshift-azure/
+```
 
 Update the azuredeploy.parameters.json file with your parameters
 
 Create a resource group :
 
+```
   [hoffmann@william ~]$ azure config mode arm
   [hoffmann@william ~]$ azure location list
   [hoffmann@william ~]$ azure group create -n "RG-OSE32" -l "West US"
   [hoffmann@william ~]$ azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json RG-OSE32 dnsName
 
+```
 Note the output :
 
+```
   data:    Outputs            :
   data:    Name                        Type    Value                                       
   data:    --------------------------  ------
@@ -57,6 +62,7 @@ Note the output :
   data:    openshift Router Public IP  String  13.91.101.166                               
   info:    group deployment create command OK
 
+```
 You're now able to go to the next step.
 
 ## Install Openshift with Ansible
