@@ -60,9 +60,7 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
 oadm registry --selector=region=infra
 oadm router --selector=region=infra
-
-mkdir -p /etc/origin/master
-htpasswd -cb /etc/origin/master/htpasswd ${USERNAME} ${PASSWORD}
 EOF
+
 
 chmod 755 /home/${USERNAME}/openshift-install.sh

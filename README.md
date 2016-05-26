@@ -54,10 +54,8 @@ Note the output :
 ```
   data:    Outputs            :
   data:    Name                        Type    Value                                       
-  data:    --------------------------  ------
-  --------------------------------------------
-  data:    openshift Webconsole        String
-  https://ose32.westus.cloudapp.azure.com:8443
+  data:    --------------------------  ------  --------------------------------------------
+  data:    openshift Webconsole        String  https://ose32.westus.cloudapp.azure.com:8443
   data:    openshift Master ssh        String  ssh -A 13.91.51.205                         
   data:    openshift Router Public IP  String  13.91.101.166                               
   info:    group deployment create command OK
@@ -67,12 +65,18 @@ You're now able to go to the next step.
 
 ## Install Openshift with Ansible
 
-You must use SSH Agentforwarding. 
+You must use SSH Agentforwarding.
 You must register your systems into RHN and to add the proper channels.
 
+```
 [adminUsername@master ~]$ ./openshift-install.sh
 ```
-
+The last step is to recreate the admin user:
+```
+[adminUsername@master ~]$ sudo su -
+[root@master ]# mkdir -p /etc/origin/master
+[root@master ]# htpasswd -cb /etc/origin/master/htpasswd ${USERNAME} ${PASSWORD}
+```
 ------
 
 ## Parameters
