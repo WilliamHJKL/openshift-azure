@@ -167,7 +167,7 @@
         "typeHandlerVersion": "1.3",
         "settings": {
           "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'node.sh')]" ],
-          "commandToExecute": "sh node.sh"
+          "commandToExecute": "[concat('sh node.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
         }
       }
     },
