@@ -15,7 +15,7 @@
       "value": "ose32"
     },
     "numberOfNodes": {
-      "value": "3"
+      "value": 3
     },
     "image": {
       "value": "rhel"
