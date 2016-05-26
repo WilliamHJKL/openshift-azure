@@ -82,6 +82,7 @@ The last step is to recreate the admin user:
 ## Parameters
 ### Input Parameters
 
+```
 | Name          | Type          | Description                                      |   |
 | ------------- | ------------- | -------------                                    |   |
 | adminUsername | String        | Username for SSH Login and Openshift Webconsole  |   |
@@ -94,14 +95,15 @@ The last step is to recreate the admin user:
 | rhnPass      | SecureString  | Red Hat Network password                         |   |
 | rhnPool      | String        | Red Hat Network pool id                          |   |
 
+```
 ### Output Parameters
 
+```
 | Name| Type           | Description |
 | ------------- | ------------- | ------------- |
 | openshift Webconsole | String       | URL of the Openshift Webconsole |
 | openshift Master ssh |String | SSH String to Login at the Master |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
+```
 ------
-
-This template deploys a RedHat Openshift 3.2  cluster on Azure.
