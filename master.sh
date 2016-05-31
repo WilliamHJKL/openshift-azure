@@ -1,4 +1,5 @@
 #!/bin/bash
+# Last Modified : 2016-05-26
 
 USERNAME=$1
 PASSWORD=$2
@@ -18,6 +19,7 @@ subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server
 
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
 yum -y install atomic-openshift-utils
+yum -y update
 
 sed -i -e "s#^OPTIONS='--selinux-enabled'#OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'#" /etc/sysconfig/docker
 
@@ -61,6 +63,5 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
 oadm registry --selector=region=infra
 oadm router --selector=region=infra
 EOF
-
 
 chmod 755 /home/${USERNAME}/openshift-install.sh

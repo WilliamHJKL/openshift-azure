@@ -1,4 +1,5 @@
 #!/bin/bash
+# Last Modified : 2016-05-26
 
 rhn_username=$1
 rhn_pass=$2
@@ -13,6 +14,7 @@ subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server
 
 
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
+yum -y update
 
 sed -i -e "s#^OPTIONS='--selinux-enabled'#OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'#" /etc/sysconfig/docker
 
