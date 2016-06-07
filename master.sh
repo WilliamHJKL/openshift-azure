@@ -65,7 +65,7 @@ openshift_master_metrics_public_url=https://${HOSTNAME}/hawkular/metrics
 openshift_master_logging_public_url=https://kibana.${HOSTNAME}
 
 # Defining htpasswd users (password is redhat123)
-# openshift_master_htpasswd_users={'william': '$apr1$bdqbl2eo$Na6mZ6SG7Vfo3YPyp1vJP.', 'demo': '$apr1$ouJ9QtwY$Z2WZ9yvm1.tNzipdR.4Wp1'
+openshift_master_htpasswd_users={'william': '$apr1$bdqbl2eo$Na6mZ6SG7Vfo3YPyp1vJP.', 'demo': '$apr1$ouJ9QtwY$Z2WZ9yvm1.tNzipdR.4Wp1'}
 
 # Enable cockpit
 osm_use_cockpit=true
