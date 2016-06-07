@@ -43,6 +43,7 @@ ansible_ssh_user=${USERNAME}
 ansible_sudo=true
 debug_level=2
 deployment_type=openshift-enterprise
+
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 
 openshift_master_default_subdomain=${ROUTEREXTIP}.xip.io
@@ -55,22 +56,20 @@ openshift_install_examples=true
 use_cluster_metrics=true
 
 # Configure metricsPublicURL in the master config for cluster metrics
-# See:
-# https://docs.openshift.com/enterprise/latest/install_config/cluster_metrics.html
 openshift_master_metrics_public_url=https://${HOSTNAME}/hawkular/metrics
 
 # Configure loggingPublicURL in the master config for aggregate logging
-# See:
-# https://docs.openshift.com/enterprise/latest/install_config/aggregate_logging.html
 openshift_master_logging_public_url=https://kibana.${HOSTNAME}
 
 # Defining htpasswd users (password is redhat123)
-openshift_master_htpasswd_users={'william': '$apr1$bdqbl2eo$Na6mZ6SG7Vfo3YPyp1vJP.', 'demo': '$apr1$ouJ9QtwY$Z2WZ9yvm1.tNzipdR.4Wp1'}
+openshift_master_htpasswd_users={'william': '\$apr1\$bdqbl2eo\$Na6mZ6SG7Vfo3YPyp1vJP.', 'demo': '\$apr1\$ouJ9QtwY\$Z2WZ9yvm1.tNzipdR.4Wp1'}
 
 # Enable cockpit
 osm_use_cockpit=true
 osm_cockpit_plugins=['cockpit-kubernetes']
 
+openshift_router_selector='region=infra'
+openshift_registry_selector='region=infra'
 
 [masters]
 master openshift_public_hostname=${HOSTNAME}
@@ -79,6 +78,7 @@ master openshift_public_hostname=${HOSTNAME}
 master
 node[01:${NODECOUNT}] openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 infranode openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+
 EOF
 
 cat <<EOF > /home/${USERNAME}/openshift-install.sh
