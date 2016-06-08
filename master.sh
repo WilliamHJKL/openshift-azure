@@ -72,7 +72,8 @@ openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
 
 [masters]
-master openshift_public_hostname=${HOSTNAME}
+master openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_public_hostname=${HOSTNAME}
+
 
 [nodes]
 master

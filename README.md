@@ -71,12 +71,20 @@ You must register your systems into RHN and to add the proper channels.
 ```
 [adminUsername@master ~]$ ./openshift-install.sh
 ```
-The last step is to recreate the admin user:
+
+## Configure NFS storage
+FIXME : add pv / pvc
 ```
-[adminUsername@master ~]$ sudo su -
-[root@master ]# mkdir -p /etc/origin/master
-[root@master ]# htpasswd -cb /etc/origin/master/htpasswd ${USERNAME} ${PASSWORD}
+[adminUsername@infranode ~]$ sudo su -
+[adminUsername@infranode ~]$ yum install nfs-utils  rpcbind
+[adminUsername@infranode ~]$ systemctl enable nfs-server
+[adminUsername@infranode ~]$ systemctl enable rpcbind
+[adminUsername@infranode ~]$ mkdir /exports
+[adminUsername@infranode ~]$ vim /etc/exports
+[adminUsername@infranode ~]$ systemctl start nfs-server
+[adminUsername@infranode ~]$ exportfs -r
 ```
+
 ------
 
 ## Parameters
