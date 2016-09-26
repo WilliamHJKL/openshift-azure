@@ -19,7 +19,7 @@
     },
     "masterDnsName": {
       "type": "string",
-      "defaultValue": "test1openshift1",
+      "defaultValue": "test1openshift2",
       "minLength": 1,
       "metadata": {
         "description": "Globally unique DNS Name for the Openshift Master Webinterface."
