@@ -4,6 +4,7 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
+      "defaultValue": "william",
       "minLength": 1,
       "metadata": {
         "description": "User name for the Virtual Machine and Openshift Webconsole."
@@ -24,6 +25,7 @@
     },
     "masterDnsName": {
       "type": "string",
+      "defaultValue": "test1openshift1",
       "minLength": 1,
       "metadata": {
         "description": "Globally unique DNS Name for the Openshift Master Webinterface."
