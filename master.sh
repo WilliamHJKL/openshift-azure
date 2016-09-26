@@ -1,5 +1,5 @@
 #!/bin/bash
-# Last Modified : 2016-05-26
+# Last Modified : 2016-08-29
 
 USERNAME=$1
 PASSWORD=$2
@@ -49,6 +49,10 @@ openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 
 openshift_master_default_subdomain=${ROUTEREXTIP}.xip.io
 openshift_use_dnsmasq=False
 
+openshift_registry_selector="role=infra"
+openshift_router_selector="role=infra"
+
+
 # Install the openshift examples
 openshift_install_examples=true
 
@@ -93,8 +97,6 @@ EOF
 cat <<EOF > /home/${USERNAME}/openshift-install.sh
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
-oadm registry --selector=region=infra
-oadm router --selector=region=infra
 EOF
 
 chmod 755 /home/${USERNAME}/openshift-install.sh
