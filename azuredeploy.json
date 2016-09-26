@@ -10,6 +10,12 @@
         "description": "User name for the Virtual Machine and Openshift Webconsole."
       }
     },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "User password for the Openshift Webconsole"
+      }
+    },
     "sshKeyData": {
       "type": "string",
       "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEA08i67MDl4MH+3ruimsW9XaqsNBKIJj0Eh3Its2z/PiFHcpS6OxEDHZvHsOQI8LqAKTiNAy+PAR4ASLz6xd77yWCLdltdoMdypPZ2sHE7vpr2nMbzBidtSugz/HuTL4p8AgXG5nsCVLUziEL6yGGHfBAyoRZpTZ1HY0bHhpQY+Qscp456VrKW9Oxe7Km8O718WzMuCt4xnTsarlumjKSdwl3JvROQ4UC/N7O0/nDeJQA+ihy0Z4b//6QQA7RGx3pApzFrjMHsJLUBZEeLn86kh+Kvk3A6RfINQ86Ae2llWjKfxfmAc73Lga3aH3dSevldo5ExtfB0fNiZAEipoBgRcQ18D4Jg2u78IobsSA8JlEN7THy5wvHElYX9YmN+sSLEd+T4K38OuHAZq2C2gB797nDa/I/dxhLJAe49xA38pCKwmX8mZP9Ub7YBxjR15V3NNFFRrmX8WIoPy2rUXC2gnX28BdQ3yE73WDHbcxRQ8Nsf8mINBJAdET0x9wAQMiOZio5HL99yBdyHTnyMxIhHKEW1dxRcgDP2DvpXgY3gzmS9MIP3SBg3je3ep5CauEGGB/58y1VcKRq/ek7kjjE50LqdXqbCUJbsPY5EAzxrkVOC4r+h3Djmceq5YNKc2nwGaJ65aQb2QxDMaPCOIAZdPmGxRz/1XpWbhk2cTp8eZD0= william@redhat.com",
@@ -53,7 +59,7 @@
       }
       },
      "rhnPass": {
-      "type": "string",
+      "type": "securestring",
       "metadata": {
         "description": "RHN Password"
       }
