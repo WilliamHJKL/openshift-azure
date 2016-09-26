@@ -27,7 +27,7 @@
     },
     "numberOfNodes": {
       "type": "int",
-      "defaultValue": "3",
+      "defaultValue": 3,
       "minValue": 1,
       "maxValue": 30,
       "metadata": {
