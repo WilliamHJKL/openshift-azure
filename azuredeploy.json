@@ -53,7 +53,7 @@
       }
       },
      "rhnPass": {
-      "type": "String",
+      "type": "string",
       "metadata": {
         "description": "RHN Password"
       }
