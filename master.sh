@@ -71,6 +71,14 @@ osm_cockpit_plugins=['cockpit-kubernetes']
 openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
 
+
+# Configure an internal regitry / NOT YET SUPPORTED
+openshift_hosted_registry_storage_kind=nfs
+openshift_hosted_registry_storage_host=infranode
+openshift_hosted_registry_storage_nfs_directory=/exports
+openshift_hosted_registry_storage_volume_name=registry
+openshift_hosted_registry_storage_volume_size=5Gi
+
 [masters]
 master openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_public_hostname=${HOSTNAME}
 
