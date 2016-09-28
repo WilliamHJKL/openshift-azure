@@ -4,7 +4,7 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
-      "defaultValue": "william",
+      "defaultValue": "admin",
       "minLength": 1,
       "metadata": {
         "description": "User name for the Virtual Machine and Openshift Webconsole."
@@ -18,14 +18,13 @@
     },
     "sshKeyData": {
       "type": "string",
-      "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEA08i67MDl4MH+3ruimsW9XaqsNBKIJj0Eh3Its2z/PiFHcpS6OxEDHZvHsOQI8LqAKTiNAy+PAR4ASLz6xd77yWCLdltdoMdypPZ2sHE7vpr2nMbzBidtSugz/HuTL4p8AgXG5nsCVLUziEL6yGGHfBAyoRZpTZ1HY0bHhpQY+Qscp456VrKW9Oxe7Km8O718WzMuCt4xnTsarlumjKSdwl3JvROQ4UC/N7O0/nDeJQA+ihy0Z4b//6QQA7RGx3pApzFrjMHsJLUBZEeLn86kh+Kvk3A6RfINQ86Ae2llWjKfxfmAc73Lga3aH3dSevldo5ExtfB0fNiZAEipoBgRcQ18D4Jg2u78IobsSA8JlEN7THy5wvHElYX9YmN+sSLEd+T4K38OuHAZq2C2gB797nDa/I/dxhLJAe49xA38pCKwmX8mZP9Ub7YBxjR15V3NNFFRrmX8WIoPy2rUXC2gnX28BdQ3yE73WDHbcxRQ8Nsf8mINBJAdET0x9wAQMiOZio5HL99yBdyHTnyMxIhHKEW1dxRcgDP2DvpXgY3gzmS9MIP3SBg3je3ep5CauEGGB/58y1VcKRq/ek7kjjE50LqdXqbCUJbsPY5EAzxrkVOC4r+h3Djmceq5YNKc2nwGaJ65aQb2QxDMaPCOIAZdPmGxRz/1XpWbhk2cTp8eZD0= william@redhat.com",
+      "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDwWZmmrEVC7AIqJI9MgtiwDHbwzVVF+qPS4jiw1MLP9zpnZ8f0tRVxdzPOqik1kE5wGEOTHIlFNUt4HeKlXt6e0kuL6acoarxLgmNrLdtj4E/5jKY1muuvuHPyBJHgHvE0NqdxvT5AYgPX1kscKGsYXx0NAmoZYUQ2sEfNkTK8Ro360y3sce3Bc8vYoXtbV/Q3hnJ366n4O7xT0PHqmCtkt/OL0iCTJ6qsgxHAxxnFIJLBlkhCelTP4cqEeJMdEhfAayZtraEQ1kf/oCCYFEijPTV93cC5sUzkOQf5OISQh5D+mTwLJgpQ0z+Mayo7adojzmFkKGHquNnMuOW/hf+",
       "metadata": {
         "description": "SSH rsa public key file as a string."
       }
     },
     "masterDnsName": {
       "type": "string",
-      "defaultValue": "test1openshift2",
       "minLength": 1,
       "metadata": {
         "description": "Globally unique DNS Name for the Openshift Master Webinterface."
@@ -187,7 +186,7 @@
     {
       "name": "[concat('nodeSet', copyindex())]",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2013-03-01",
+      "apiVersion": "2015-01-01",
       "copy": {
         "name": "nodeSet",
         "count": "[parameters('numberOfNodes')]"
@@ -242,7 +241,7 @@
     {
       "name": "master",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2013-03-01",
+      "apiVersion": "2015-01-01",
       "dependsOn": [
         "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
         "[concat('Microsoft.Storage/storageAccounts/', variables('masterStorageName'))]",
@@ -306,7 +305,7 @@
     {
       "name": "infranode",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2013-03-01",
+      "apiVersion": "2015-01-01",
       "dependsOn": [
         "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
         "[concat('Microsoft.Storage/storageAccounts/', variables('infranodeStorageName'))]"

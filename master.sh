@@ -17,6 +17,9 @@ subscription-manager attach --pool=${rhn_pool}
 subscription-manager repos --disable='*'
 subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.2-rpms"
 
+sed -i -e 's/sslverify=1/sslverify=0/' /etc/yum.repos.d/rh-cloud.repo
+sed -i -e 's/sslverify=1/sslverify=0/' /etc/yum.repos.d/rhui-load-balancers
+
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
 yum -y install atomic-openshift-utils
 yum -y update
@@ -40,7 +43,7 @@ nodes
 
 [OSEv3:vars]
 ansible_ssh_user=${USERNAME}
-ansible_sudo=true
+ansible_become=true
 debug_level=2
 deployment_type=openshift-enterprise
 
@@ -66,7 +69,7 @@ openshift_master_metrics_public_url=https://${HOSTNAME}/hawkular/metrics
 openshift_master_logging_public_url=https://kibana.${HOSTNAME}
 
 # Defining htpasswd users (password is redhat123)
-openshift_master_htpasswd_users={'william': '\$apr1\$bdqbl2eo\$Na6mZ6SG7Vfo3YPyp1vJP.', 'demo': '\$apr1\$ouJ9QtwY\$Z2WZ9yvm1.tNzipdR.4Wp1'}
+openshift_master_htpasswd_users={'admin': '\$apr1\$bdqbl2eo\$Na6mZ6SG7Vfo3YPyp1vJP.', 'demo': '\$apr1\$ouJ9QtwY\$Z2WZ9yvm1.tNzipdR.4Wp1'}
 
 # Enable cockpit
 osm_use_cockpit=true
