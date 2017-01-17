@@ -22,7 +22,7 @@ sed -i -e 's/sslverify=1/sslverify=0/' /etc/yum.repos.d/rhui-load-balancers
 
 yum -y install wget git net-tools bind-utils iptables-services bridge-utils bash-completion docker
 yum -y install atomic-openshift-utils
-yum -y update
+# yum -y update
 
 sed -i -e "s#^OPTIONS='--selinux-enabled'#OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'#" /etc/sysconfig/docker
 

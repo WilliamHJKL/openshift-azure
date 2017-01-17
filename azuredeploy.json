@@ -65,7 +65,7 @@
       },
     "rhnPool": {
       "type": "string",
-      "defaultValue": "8a85f9843e3d687a013e3ddd46dd07f1",
+      "defaultValue": "8a85f9843affb61f013b52c86ce856d2",
       "metadata": {
         "description": "RHN pool ID"
       }
