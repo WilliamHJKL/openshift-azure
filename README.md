@@ -3,6 +3,7 @@ This work is based on https://github.com/derdanu
 # RedHat Openshift 3.2 cluster on Azure
 
 When creating the RedHat Openshift 3.2 cluster on Azure, you will need a SSH RSA key for access.
+Do not forget to update rhn-username, pools, etc ...
 
 ## Create the cluster
 
