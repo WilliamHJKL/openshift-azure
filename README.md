@@ -1,16 +1,16 @@
 This work is based on https://github.com/derdanu
 
-# RedHat Openshift 3.2 cluster on Azure
+# RedHat Openshift 3.4 cluster on Azure
 
-When creating the RedHat Openshift 3.2 cluster on Azure, you will need a SSH RSA key for access.
+When creating the RedHat Openshift 3.4 cluster on Azure, you will need a SSH RSA key for access.
 Do not forget to update rhn-username, pools, etc ...
 
 ## Create the cluster
 
-To have OpenShift Enterprise 3.2 running on Azure, you will have to
+To have OpenShift Enterprise 3.4 running on Azure, you will have to
 follow 2 steps.
 - First deploy the cluster with one of the following method.
-- Then use ansible to install OSE 3.2 ( in a word run the
+- Then use ansible to install OSE 3.4 ( in a word run the
 openshift-install.sh script.
 
 ### Create the cluster on the Azure Portal
@@ -27,7 +27,7 @@ openshift-install.sh script.
 ```powershell
 New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <RessourceGroupName> -TemplateUri https://raw.githubusercontent.com/WilliamRedHat/openshift-azure/rhel/azuredeploy.json
 ```
-### Create the cluster with Azure CLI on RHEL 7.2
+### Create the cluster with Azure CLI on RHEL 7.3
 
 #### Install Azure CLI
 Use the knowledge base article : https://access.redhat.com/articles/1994463
@@ -46,8 +46,8 @@ Create a resource group :
 ```
   [hoffmann@william ~]$ azure config mode arm
   [hoffmann@william ~]$ azure location list
-  [hoffmann@william ~]$ azure group create -n "RG-OSE32" -l "West US"
-  [hoffmann@william ~]$ azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json RG-OSE32 dnsName
+  [hoffmann@william ~]$ azure group create -n "RG-OSE34" -l "West US"
+  [hoffmann@william ~]$ azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json RG-OSE34 dnsName
 
 ```
 Note the output :
@@ -56,7 +56,7 @@ Note the output :
   data:    Outputs            :
   data:    Name                        Type    Value                                       
   data:    --------------------------  ------  --------------------------------------------
-  data:    openshift Webconsole        String  https://ose32.westus.cloudapp.azure.com:8443
+  data:    openshift Webconsole        String  https://ose34.westus.cloudapp.azure.com:8443
   data:    openshift Master ssh        String  ssh -A 13.91.51.205                         
   data:    openshift Router Public IP  String  13.91.101.166                               
   info:    group deployment create command OK
