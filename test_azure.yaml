@@ -1,6 +1,0 @@
-- name: Test the inventory script
-  hosts: azure
-  connection: local
-  gather_facts: no
-  tasks:
-    - debug: msg="{{ inventory_hostname }} has powerstate {{ powerstate }}"
