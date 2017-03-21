@@ -1,4 +1,4 @@
-This work is based on https://github.com/derdanu
+This work is based on https://github.com/WilliamRedHat
 
 # RedHat Openshift 3.4 cluster on Azure
 
@@ -15,7 +15,7 @@ openshift-install.sh script.
 
 ### Create the cluster on the Azure Portal
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FWilliamRedHat%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Flbroudoux%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FWilliamRedHat%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
