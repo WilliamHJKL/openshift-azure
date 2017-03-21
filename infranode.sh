@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Install a NFS server on infranode
-sudo su -
 yum install nfs-utils rpcbind
 systemctl enable nfs-server
 systemctl enable rpcbind
