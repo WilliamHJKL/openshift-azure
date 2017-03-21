@@ -166,8 +166,8 @@
         "type": "CustomScriptForLinux",
         "typeHandlerVersion": "1.3",
         "settings": {
-          "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'node.sh')]", "[concat(parameters('baseTemplateUrl'), 'infranode.sh')]" ],
-          "commandToExecute": "[concat('sh node.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'), ' && sh infranode.sh')]"
+          "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'node.sh')]" ],
+          "commandToExecute": "[concat('sh node.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
         }
       }
     },
