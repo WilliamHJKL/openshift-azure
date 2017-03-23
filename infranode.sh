@@ -30,7 +30,7 @@ systemctl enable docker
 
 
 # Install a NFS server on infranode
-yum install nfs-utils rpcbind
+yum -y install nfs-utils rpcbind
 systemctl enable nfs-server
 systemctl enable rpcbind
 systemctl start rpcbind
@@ -63,7 +63,7 @@ while [ $n -le 20 ]
   (( n++ ))
 done
 
-CAT <<EOF > /etc/exports.d/openshif-ansible
+cat <<EOF > /etc/exports.d/openshif-ansible.exports
 /exports/registry *(rw,root_squash)
 /exports/metrics *(rw,root_squash)
 /exports/logging-es *(rw,root_squash)

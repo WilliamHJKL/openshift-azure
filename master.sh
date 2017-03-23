@@ -35,6 +35,11 @@ docker-storage-setup
 systemctl enable docker
 systemctl start docker
 
+yum -y install nfs-utils rpcbind
+systemctl enable rpcbind
+systemctl start rpcbind
+setsebool -P virt_sandbox_use_nfs 1
+setsebool -P virt_use_nfs 1
 
 cat <<EOF > /etc/ansible/hosts
 [OSEv3:children]
