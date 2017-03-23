@@ -27,3 +27,12 @@ EOF
 
 docker-storage-setup
 systemctl enable docker
+
+yum -y install nfs-utils rpcbind
+systemctl start rpcbind
+systemctl enable rpcbind
+setsebool -P virt_sandbox_use_nfs 1
+setsebool -P virt_use_nfs 1
+
+systemctl stop firewalld
+systemctl disable firewalld

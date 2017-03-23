@@ -40,7 +40,6 @@ cat <<EOF > /etc/ansible/hosts
 [OSEv3:children]
 masters
 nodes
-nfs
 
 [OSEv3:vars]
 ansible_ssh_user=${USERNAME}
@@ -79,26 +78,46 @@ openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
 
 # Configure an internal regitry
-openshift_hosted_registry_selector=‘region=infra'
+openshift_hosted_registry_selector='region=infra'
 openshift_hosted_registry_replicas=1
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_host=infranoce
+openshift_hosted_registry_storage_host=infranode
 openshift_hosted_registry_storage_nfs_directory=/exports
 openshift_hosted_registry_storage_volume_name=registry
-openshift_hosted_registry_storage_volume_size=5Gi
+openshift_hosted_registry_storage_volume_size=15Gi
 
 # Enable metrics
 openshift_hosted_metrics_deploy=true
 openshift_hosted_metrics_storage_kind=nfs
 openshift_hosted_metrics_storage_access_modes=['ReadWriteOnce']
-openshift_hosted_metrics_storage_host=oselab.example.com
+openshift_hosted_metrics_storage_host=infranode
 openshift_hosted_metrics_storage_nfs_directory=/exports
 openshift_hosted_metrics_storage_volume_name=metrics
 openshift_hosted_metrics_storage_volume_size=5Gi
 
-[nfs]
-infranode
+# Enable logging
+openshift_hosted_logging_deploy=true
+openshift_hosted_logging_prefix=registry.access.redhat.com/openshift3/
+openshift_hosted_logging_version=v3.4
+openshift_hosted_logging_deployer_prefix=registry.access.redhat.com/openshift3/
+openshift_hosted_logging_deployer_version=v3.4
+openshift_hosted_logging_hostname=https://kibana.${ROUTEREXTIP}.xip.io
+openshift_hosted_logging_master_public_url=https://${HOSTNAME}:8443
+openshift_hosted_logging_elasticsearch_cluster_size=1
+openshift_hosted_logging_elasticsearch_pvc_size=5G
+openshift_hosted_logging_elasticsearch_instance_ram=2G
+openshift_hosted_logging_elasticsearch_nodeselector='region=infra'
+openshift_hosted_logging_kibana_nodeselector='region=infra'
+openshift_hosted_logging_curator_nodeselector='region=infra'
+openshift_hosted_logging_fluentd_nodeselector='region=primary'
+openshift_hosted_logging_enable_ops_cluster=false
+openshift_hosted_logging_storage_kind=nfs
+openshift_hosted_logging_storage_access_modes=['ReadWriteOnce']
+openshift_hosted_logging_storage_host=infranode
+openshift_hosted_logging_storage_nfs_directory=/exports
+openshift_hosted_logging_storage_volume_name=logging-es
+openshift_hosted_logging_storage_volume_size=10Gi
 
 [masters]
 master openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_public_hostname=${HOSTNAME}
@@ -113,12 +132,13 @@ EOF
 cat <<EOF > /home/${USERNAME}/openshift-install.sh
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
+oadm policy add-cluster-role-to-user admin admin
 EOF
 
 chmod 755 /home/${USERNAME}/openshift-install.sh
 
 n=1
-while [ $n -le 9 ]
+while [ $n -le 4 ]
 do
 cat <<EOF > /home/${USERNAME}/pv000$n.json
 {
@@ -143,6 +163,32 @@ EOF
 (( n++ ))
 done
 
+n=5
+while [ $n -le 9 ]
+do
+cat <<EOF > /home/${USERNAME}/pv00$n.json
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "name": "pv00$n"
+  },
+  "spec": {
+    "capacity": {
+        "storage": "5Gi"
+    },
+    "accessModes": [ "ReadWriteOnce", "ReadWriteMany" ],
+    "nfs": {
+        "path": "/exports/pv00$n",
+        "server": "infranode"
+    },
+    "persistentVolumeReclaimPolicy": "Recycle"
+  }
+}
+EOF
+(( n++ ))
+done
+
 n=10
 while [ $n -le 15 ]
 do
@@ -155,7 +201,7 @@ cat <<EOF > /home/${USERNAME}/pv00$n.json
   },
   "spec": {
     "capacity": {
-        "storage": "5Gi"
+        "storage": "10Gi"
     },
     "accessModes": [ "ReadWriteOnce", "ReadWriteMany" ],
     "nfs": {
@@ -255,3 +301,5 @@ do
   (( n++ ))
 done
 EOF
+
+chmod 755 /home/${USERNAME}/openshift-services-deploy.sh
