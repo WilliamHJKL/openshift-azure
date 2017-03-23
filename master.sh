@@ -88,7 +88,7 @@ openshift_hosted_registry_storage_volume_name=registry
 openshift_hosted_registry_storage_volume_size=15Gi
 
 # Enable metrics
-openshift_hosted_metrics_deploy=true
+openshift_hosted_metrics_deploy=false
 openshift_hosted_metrics_storage_kind=nfs
 openshift_hosted_metrics_storage_access_modes=['ReadWriteOnce']
 openshift_hosted_metrics_storage_host=infranode
@@ -97,7 +97,7 @@ openshift_hosted_metrics_storage_volume_name=metrics
 openshift_hosted_metrics_storage_volume_size=5Gi
 
 # Enable logging
-openshift_hosted_logging_deploy=true
+openshift_hosted_logging_deploy=false
 openshift_hosted_logging_prefix=registry.access.redhat.com/openshift3/
 openshift_hosted_logging_version=v3.4
 openshift_hosted_logging_deployer_prefix=registry.access.redhat.com/openshift3/
@@ -124,14 +124,15 @@ master openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift
 
 [nodes]
 master
-node[01:${NODECOUNT}] openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 infranode openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+node[01:${NODECOUNT}] openshift_node_labels="{'region': 'primary', 'zone': 'default'}"
 
 EOF
 
 cat <<EOF > /home/${USERNAME}/openshift-install.sh
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
+oc annotate namespace default openshift.io/node-selector='region=infra' --overwrite
 oadm policy add-cluster-role-to-user admin admin
 EOF
 

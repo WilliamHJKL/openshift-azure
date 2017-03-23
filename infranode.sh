@@ -33,8 +33,8 @@ systemctl enable docker
 yum install nfs-utils rpcbind
 systemctl enable nfs-server
 systemctl enable rpcbind
-systemctl start nfs-server
 systemctl start rpcbind
+systemctl start nfs-server
 
 systemctl stop firewalld
 systemctl disable firewalld
