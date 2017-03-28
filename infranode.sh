@@ -47,6 +47,13 @@ cd /exports
 mkdir registry
 mkdir metrics
 mkdir logging-es
+chown -R nfsnobody:nfsnobody registry/
+chown -R nfsnobody:nfsnobody metrics/
+chown -R nfsnobody:nfsnobody logging-es/
+chmod -R 777 registry/
+chmod -R 777 metrics/
+chmod -R 777 logging-es/
+
 n=1
 while [ $n -le 9 ]
   do mkdir pv000$n

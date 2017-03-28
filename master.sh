@@ -82,6 +82,11 @@ osm_default_node_selector='region=primary'
 openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
 
+# Confifgure router
+# Force to 1 otherwise Ansible compute 2 replicas cause master and infranode are region=infra
+# but Ansible does not take into account that master is not schedulable. So it fails...
+openshift_hosted_router_replicas=1
+
 # Configure an internal regitry
 openshift_hosted_registry_selector='region=infra'
 openshift_hosted_registry_replicas=1
@@ -93,7 +98,7 @@ openshift_hosted_registry_storage_volume_name=registry
 openshift_hosted_registry_storage_volume_size=15Gi
 
 # Enable metrics
-openshift_hosted_metrics_deploy=false
+openshift_hosted_metrics_deploy=true
 openshift_hosted_metrics_storage_kind=nfs
 openshift_hosted_metrics_storage_access_modes=['ReadWriteOnce']
 openshift_hosted_metrics_storage_host=infranode
@@ -102,7 +107,7 @@ openshift_hosted_metrics_storage_volume_name=metrics
 openshift_hosted_metrics_storage_volume_size=5Gi
 
 # Enable logging
-openshift_hosted_logging_deploy=false
+openshift_hosted_logging_deploy=true
 openshift_hosted_logging_prefix=registry.access.redhat.com/openshift3/
 openshift_hosted_logging_version=v3.4
 openshift_hosted_logging_deployer_prefix=registry.access.redhat.com/openshift3/
@@ -172,12 +177,12 @@ done
 n=5
 while [ $n -le 9 ]
 do
-cat <<EOF > /home/${USERNAME}/pv00$n.json
+cat <<EOF > /home/${USERNAME}/pv000$n.json
 {
   "apiVersion": "v1",
   "kind": "PersistentVolume",
   "metadata": {
-    "name": "pv00$n"
+    "name": "pv000$n"
   },
   "spec": {
     "capacity": {
@@ -185,7 +190,7 @@ cat <<EOF > /home/${USERNAME}/pv00$n.json
     },
     "accessModes": [ "ReadWriteOnce", "ReadWriteMany" ],
     "nfs": {
-        "path": "/exports/pv00$n",
+        "path": "/exports/pv000$n",
         "server": "infranode"
     },
     "persistentVolumeReclaimPolicy": "Recycle"
@@ -268,6 +273,15 @@ cat <<EOF > /home/${USERNAME}/openshift-services-deploy.sh
 
 oc project openshift-infra
 oc annotate namespace openshift-infra openshift.io/node-selector='region=infra' --overwrite
+oc create -f - <<API
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: metrics-deployer
+secrets:
+- name: metrics-deployer
+API
+oc secrets new metrics-deployer nothing=/dev/null
 oadm policy add-role-to-user edit system:serviceaccount:openshift-infra:metrics-deployer
 oadm policy add-cluster-role-to-user cluster-reader system:serviceaccount:openshift-infra:heapster
 oc adm policy add-role-to-user view system:serviceaccount:openshift-infra:hawkular -n openshift-infra
@@ -303,7 +317,7 @@ oc process logging-deployer-template -n openshift \
 n=1
 while [ \$n -le $NODECOUNT ]
 do
-  oc label node/node0$n logging-infra-fluentd=true
+  oc label node/node0\$n logging-infra-fluentd=true
   (( n++ ))
 done
 EOF
