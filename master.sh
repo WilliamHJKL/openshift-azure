@@ -314,12 +314,7 @@ oc process logging-deployer-template -n openshift \
   -v IMAGE_PREFIX=registry.access.redhat.com/openshift3/ \
   | oc create -f -
 
-n=1
-while [ \$n -le $NODECOUNT ]
-do
-  oc label node/node0\$n logging-infra-fluentd=true
-  (( n++ ))
-done
+oc label --selector='region=primary' logging-infra-fluentd=true
 EOF
 
 chmod 755 /home/${USERNAME}/openshift-services-deploy.sh
