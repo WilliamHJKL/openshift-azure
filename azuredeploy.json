@@ -72,7 +72,7 @@
       }
   },
   "variables": {
-  "baseTemplateUrl": "https://raw.githubusercontent.com/WilliamRedHat/openshift-azure/rhel/",
+  "baseTemplateUrl": "https://raw.githubusercontent.com/lbroudoux/openshift-azure/rhel/",
     "baseVMachineTemplateUriInfranode": "[concat(variables('baseTemplateUrl'), 'infranode.json')]",
     "baseVMachineTemplateUriNode": "[concat(variables('baseTemplateUrl'), 'node.json')]",
     "baseVMachineTemplateUriMaster": "[concat(variables('baseTemplateUrl'), 'master.json')]",
@@ -90,11 +90,12 @@
     "nodeStorageName": "[concat(uniqueString(resourceGroup().id), 'nodesa')]",
     "masterStorageName": "[concat(uniqueString(resourceGroup().id), 'mastersa')]",
     "vhdStorageType": "Standard_LRS",
+    "infraVhdStorageType": "Premium_LRS",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "infranodeSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('infranodesubnetName'))]",
     "nodeSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('nodesubnetName'))]",
     "masterSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('mastersubnetName'))]",
-    "infranodeVMSize": "Standard_D2_v2",
+    "infranodeVMSize": "Standard_DS3_v2",
     "nodeVMSize": "Standard_D2_v2",
     "masterVMSize": "Standard_D3_v2",
     "centos": {
@@ -120,7 +121,7 @@
         "displayName": "StorageAccount"
       },
       "properties": {
-        "accountType": "[variables('vhdStorageType')]"
+        "accountType": "[variables('infraVhdStorageType')]"
       }
     },
     {
@@ -369,4 +370,3 @@
     }
   }
 }
-
