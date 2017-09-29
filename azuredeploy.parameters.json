@@ -3,31 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "value": "william"
+      "value": "changeme"
     },
     "adminPassword": {
-      "value": "redhat123"
+      "value": "changeme"
     },
     "sshKeyData": {
-      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDwWZmmrEVC7AIqJI9MgtiwDHbwzVVF+qPS4jiw1MLP9zpnZ8f0tRVxdzPOqik1kE5wGEOTHIlFNUt4HeKlXt6e0kuL6acoarxLgmNrLdtj4E/5jKY1muuvuHPyBJHgHvE0NqdxvT5AYgPX1kscKGsYXx0NAmoZYUQ2sEfNkTK8Ro360y3sce3Bc8vYoXtbV/Q3hnJ366n4O7xT0PHqmCtkt/OL0iCTJ6qsgxHAxxnFIJLBlkhCelTP4cqEeJMdEhfAayZtraEQ1kf/oCCYFEijPTV93cC5sUzkOQf5OISQh5D+mTwLJgpQ0z+Mayo7adojzmFkKGHquNnMuOW/hf+t"
+      "value": "changeme"
     },
     "masterDnsName": {
-      "value": "plateforme1"
+      "value": "master"
     },
     "numberOfNodes": {
-      "value": 3
+      "value": 1
     },
     "image": {
       "value": "rhel"
     },
     "rhnUser": {
-      "value": "rhn-gls-hoffmann"
+      "value": "changeme"
     },
     "rhnPass": {
       "value": "changeme"
     },
     "rhnPool": {
-      "value": "8a85f9843affb61f013b52c86ce856d2"
+      "value": "changeme"
     }
   }
 }

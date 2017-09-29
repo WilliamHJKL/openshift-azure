@@ -4,7 +4,7 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
-      "defaultValue": "william",
+      "defaultValue": "admin",
       "minLength": 1,
       "metadata": {
         "description": "User name for the Virtual Machine and Openshift Webconsole."
@@ -17,14 +17,14 @@
       }
     },
     "sshKeyData": {
-      "type": "string",
-      "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEA08i67MDl4MH+3ruimsW9XaqsNBKIJj0Eh3Its2z/PiFHcpS6OxEDHZvHsOQI8LqAKTiNAy+PAR4ASLz6xd77yWCLdltdoMdypPZ2sHE7vpr2nMbzBidtSugz/HuTL4p8AgXG5nsCVLUziEL6yGGHfBAyoRZpTZ1HY0bHhpQY+Qscp456VrKW9Oxe7Km8O718WzMuCt4xnTsarlumjKSdwl3JvROQ4UC/N7O0/nDeJQA+ihy0Z4b//6QQA7RGx3pApzFrjMHsJLUBZEeLn86kh+Kvk3A6RfINQ86Ae2llWjKfxfmAc73Lga3aH3dSevldo5ExtfB0fNiZAEipoBgRcQ18D4Jg2u78IobsSA8JlEN7THy5wvHElYX9YmN+sSLEd+T4K38OuHAZq2C2gB797nDa/I/dxhLJAe49xA38pCKwmX8mZP9Ub7YBxjR15V3NNFFRrmX8WIoPy2rUXC2gnX28BdQ3yE73WDHbcxRQ8Nsf8mINBJAdET0x9wAQMiOZio5HL99yBdyHTnyMxIhHKEW1dxRcgDP2DvpXgY3gzmS9MIP3SBg3je3ep5CauEGGB/58y1VcKRq/ek7kjjE50LqdXqbCUJbsPY5EAzxrkVOC4r+h3Djmceq5YNKc2nwGaJ65aQb2QxDMaPCOIAZdPmGxRz/1XpWbhk2cTp8eZD0= william@redhat.com",
+      "type": "securestring",
       "metadata": {
         "description": "SSH rsa public key file as a string."
       }
     },
     "masterDnsName": {
       "type": "string",
+      "defaultValue": "master",
       "minLength": 1,
       "metadata": {
         "description": "Globally unique DNS Name for the Openshift Master Webinterface."
@@ -32,11 +32,11 @@
     },
     "numberOfNodes": {
       "type": "int",
-      "defaultValue": 3,
+      "defaultValue": 1,
       "minValue": 1,
-      "maxValue": 30,
+      "maxValue": 3,
       "metadata": {
-        "description": "Number of Openshift Nodes to deploy (max 30)"
+        "description": "Number of Openshift Nodes to deploy (max 3)"
       }
     },
     "image": {
@@ -52,7 +52,7 @@
     },
     "rhnUser": {
       "type": "string",
-      "defaultValue": "rhn-gls-hoffmann",
+      "defaultValue": "userid",
       "metadata": {
         "description": "RHN User ID"
       }
@@ -65,14 +65,14 @@
       },
     "rhnPool": {
       "type": "string",
-      "defaultValue": "8a85f9843affb61f013b52c86ce856d2",
+      "defaultValue": "poolid",
       "metadata": {
         "description": "RHN pool ID"
       }
       }
   },
   "variables": {
-  "baseTemplateUrl": "https://raw.githubusercontent.com/lbroudoux/openshift-azure/rhel/",
+  "baseTemplateUrl": "https://raw.githubusercontent.com/hashnao/openshift-azure/",
     "baseVMachineTemplateUriInfranode": "[concat(variables('baseTemplateUrl'), 'infranode.json')]",
     "baseVMachineTemplateUriNode": "[concat(variables('baseTemplateUrl'), 'node.json')]",
     "baseVMachineTemplateUriMaster": "[concat(variables('baseTemplateUrl'), 'master.json')]",
@@ -95,9 +95,9 @@
     "infranodeSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('infranodesubnetName'))]",
     "nodeSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('nodesubnetName'))]",
     "masterSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('mastersubnetName'))]",
-    "infranodeVMSize": "Standard_DS3_v2",
-    "nodeVMSize": "Standard_D2_v2",
-    "masterVMSize": "Standard_D3_v2",
+    "infranodeVMSize": "Standard_DS2",
+    "nodeVMSize": "Standard_DS2",
+    "masterVMSize": "Standard_DS2",
     "centos": {
       "publisher": "Openlogic",
       "offer": "CentOS",
@@ -107,7 +107,7 @@
     "rhel": {
       "publisher": "RedHat",
       "offer": "RHEL",
-      "sku": "7.2",
+      "sku": "7.3",
       "version": "latest"
     }
   },
